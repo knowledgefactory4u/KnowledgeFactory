@@ -32,7 +32,7 @@ public class VaadinUI extends UI {
 
 	private Grid<User> grid = new Grid<User>(User.class);
 	private TextField name = new TextField("Name");
-	private TextField mail = new TextField("Mailame");
+	private TextField mail = new TextField("Mail");
 	private Button save = new Button("Save");
 
 	@Override
