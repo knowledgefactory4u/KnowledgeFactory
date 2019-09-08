@@ -34,7 +34,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- embedded tomcat -->
+		<!-- embedded jetty -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty</artifactId>
