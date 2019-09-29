@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebSocket Chat Application</title>
+<link href="/bootstrap.min.css" rel="stylesheet">
+<script src="/jquery.min.js"></script>
+<script src="/main.js"></script>
+<script src="/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<br> <br> <br>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="connect">Spring Boot socket programming
+							example:</label>
+						<button class="btn btn-success" id="connect" type="button">Start
+						</button>
+						<button class="btn btn-danger" id="disconnect" type="button"
+							disabled="disabled">End</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<br> <br> <br>
+		<div class="row">
+			<div class="col-md-2">
+				<table id="chat">
+					<thead>
+						<tr>
+							<th>Welcome,Please enter your message</th>
+						</tr>
+					</thead>
+
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-6">
+				<form>
+					<div class="form-group">
+						<textarea class="form-control" rows="5" id="user"
+							placeholder="Write your message here..." required></textarea>
+					</div>
+					<button class="btn btn-primary" id="send" type="submit">Send</button>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+			<br> <br>
+		</div>
+		<div class="raw">
+			<div class="col-md-2">
+				<table id="response">
+					<thead>
+						<tr>
+							<th>Your Message</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form>
+					<div class="form-group">
+						<textarea id="helloworldmessage" class="form-control" rows="15"
+							placeholder="Your Message" required></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
