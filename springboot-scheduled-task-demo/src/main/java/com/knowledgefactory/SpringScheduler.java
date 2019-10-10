@@ -40,10 +40,10 @@ public class SpringScheduler {
 		System.out.println("Scheduled task With Fixed Rate and Initial Delay:" + sdf.format(cal.getTime()));
 	}
 
-	// Scheduling a Task using Cron Expression
-	@Scheduled(cron = "0 0 12 * * ? 2019")
+	// Scheduling a Task using Cron Expression:every Christmas Day at midnight
+	@Scheduled(cron = "0 0 0 25 12 ?")
 	public void scheduleTaskWithCronExpression() {
-		System.out.println("Scheduled Task using Cron Expression");
+		System.out.println("Scheduled Task using Cron Expression:every Christmas Day at midnight");
 	}
 
 }
