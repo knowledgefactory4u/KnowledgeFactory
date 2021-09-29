@@ -9,7 +9,7 @@
 		<version>2.1.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.javaguides</groupId>
+	<groupId>registration-login-spring-boot-security-thymeleaf</groupId>
 	<artifactId>registration-login-spring-boot-security-thymeleaf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>registration-login-spring-boot-security-thymeleaf-rdbms</name>
