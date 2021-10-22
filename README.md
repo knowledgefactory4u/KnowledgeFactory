@@ -20,4 +20,4 @@ Gradle: gradle bootRun
 
 Maven: mvn spring-boot:run
 
-<b>Step 5:</b> Access the URL in the browser: http://localhost:8080/
+
