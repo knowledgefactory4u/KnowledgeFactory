@@ -8,16 +8,10 @@
 
 <b>Step 3:</b> Build application jar file:
 
-mvn clean install or gradle build
 
 <b>Step 4:</b> Start the application: 
 
 Run as Spring Boot application or Java application
 
-or
-
-Gradle: gradle bootRun
-
-Maven: mvn spring-boot:run
 
 
