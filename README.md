@@ -9,9 +9,7 @@
 <b>Step 3:</b> Build application jar file:
 
 
-<b>Step 4:</b> Start the application: 
-
-Run as Spring Boot application or Java application
+<b>Step 4:</b> Start the application: Run as Spring Boot application or Java application
 
 
 
