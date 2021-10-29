@@ -1,0 +1,27 @@
+type Query {
+  allAuthors: [Author]
+  allBooks: [Book]
+  book(id: ID!): Book
+  author(id: ID!): Author
+}
+
+type Mutation {
+  addAuthor(name: String!): Author!
+  updateAuthor(id: ID!, name: String!): Author!
+  deleteAuthor(id: ID!): Boolean
+  addBook(name: String!, price: Float!, author_id: ID!): Book!
+  updateBook(id: ID!, name: String!,price: Float!): Book!
+  deleteBook(id: ID!): Boolean
+}
+
+type Author {
+  id: ID
+  name: String!
+}
+
+type Book {
+  id: ID
+  name: String!
+  price: Float!
+  author: Author!
+}
