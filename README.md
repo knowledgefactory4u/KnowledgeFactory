@@ -6,10 +6,8 @@
 
 <b>Step 2:</b> Open the project using your favourite IDE. I am using IntelliJ IDEA.
 
-<b>Step 3:</b> Build application jar file:
+<b>Step 3:</b> Build 
 
-
-<b>Step 4:</b> Start the application: Run as Spring Boot application or Java application
-
+<b>Step 4:</b> Run
 
 
