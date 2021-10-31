@@ -1,0 +1,10 @@
+knf:
+    app:
+        jwtExpirationMs: 76300000
+        jwtSecret: knowledgeFactory
+spring:
+    data:
+        mongodb:
+            database: demo_db
+            host: localhost
+            port: 27017
