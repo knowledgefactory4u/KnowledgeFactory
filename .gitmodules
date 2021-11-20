@@ -1,0 +1,3 @@
+[submodule "kotlin-springboot"]
+	path = kotlin-springboot
+	url = https://github.com/knowledgefactory4u/kotlin_springboot_app
