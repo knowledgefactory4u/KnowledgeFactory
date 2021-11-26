@@ -18,7 +18,9 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 public class WordHelper {
 
-	static String imgFile = "src/main/resources/spring.png";
+	static String imgFile = "/home/user/Downloads/KnowledgeFactory-master"
+            + "/springboot-microsoft-word"
+            + "/src/main/resources/spring.png";
 
 	public static ByteArrayInputStream generateWord()
 			throws FileNotFoundException, IOException, InvalidFormatException {
