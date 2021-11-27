@@ -1,0 +1,5 @@
+spring:
+   application:
+      name: order
+server:
+   port: 9093

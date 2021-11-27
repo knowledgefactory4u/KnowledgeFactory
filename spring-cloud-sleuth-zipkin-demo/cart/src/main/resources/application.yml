@@ -1,0 +1,5 @@
+spring:
+   application:
+      name: cart
+server:
+   port: 9092
