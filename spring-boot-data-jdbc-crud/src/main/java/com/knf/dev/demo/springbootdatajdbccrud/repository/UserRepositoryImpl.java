@@ -21,106 +21,104 @@ import com.knf.dev.demo.
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-	private final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	public UserRepositoryImpl(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+    @Autowired
+    public UserRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-	@Override
-	public User findOne(Long id) {
-		var sqlQuery = Query.FIND_ONE;
+    @Override
+    public User findOne(Long id) {
+        var sqlQuery = Query.FIND_ONE;
 
-		try {
+        try {
 
-			return jdbcTemplate.
-					queryForObject(sqlQuery, 
-							this::mapRowToUser, id);
-			
-		} catch (EmptyResultDataAccessException ex) {
-			throw new UserNotFound("Invalid User Id");
-		} catch (Exception e) {
-			throw new InternalServerError
-			   ("Internal Server Error");
-		}
+            return jdbcTemplate.
+                    queryForObject(sqlQuery, 
+                            this::mapRowToUser, id);
+            
+        } catch (EmptyResultDataAccessException ex) {
+            throw new UserNotFound("Invalid User Id");
+        } catch (Exception e) {
+            throw new InternalServerError
+               ("Internal Server Error");
+        }
 
-	}
+    }
 
-	@Override
-	public List<User> findAll() {
+    @Override
+    public List<User> findAll() {
 
-		var sqlQuery = Query.FIND_ALL;
+        var sqlQuery = Query.FIND_ALL;
 
-		return jdbcTemplate.
-				query(sqlQuery, this::mapRowToUser);
-	}
+        return jdbcTemplate.
+                query(sqlQuery, this::mapRowToUser);
+    }
 
-	@Override
-	public void save(User user) {
+    @Override
+    public void save(User user) {
 
-		var sqlQuery = Query.SAVE;
+        var sqlQuery = Query.SAVE;
 
-		jdbcTemplate.update(sqlQuery, 
-				user.getFirstName(), 
-				  user.getLastName(), 
-				    user.getEmail());
-	}
+        jdbcTemplate.update(sqlQuery, 
+                user.firstName(), 
+                  user.lastName(), 
+                    user.email());
+    }
 
-	@Override
-	public Long saveAndReturnId(User user) {
+    @Override
+    public Long saveAndReturnId(User user) {
 
-		var sqlQuery = Query.SAVE_AND_RETURN_ID;
+        var sqlQuery = Query.SAVE_AND_RETURN_ID;
 
-		var keyHolder = new GeneratedKeyHolder();
+        var keyHolder = new GeneratedKeyHolder();
 
-		jdbcTemplate.update(connection -> {
-			PreparedStatement stmt = connection.
-					prepareStatement(sqlQuery, 
-							new String[] { "id" });
-			
-			stmt.setString(1, user.getFirstName());
-			stmt.setString(2, user.getLastName());
-			stmt.setString(3, user.getEmail());
-			
-			return stmt;
-			
-		}, keyHolder);
+        jdbcTemplate.update(connection -> {
+            PreparedStatement stmt = connection.
+                    prepareStatement(sqlQuery, 
+                            new String[] { "id" });
+            
+            stmt.setString(1, user.firstName());
+            stmt.setString(2, user.lastName());
+            stmt.setString(3, user.email());
+            
+            return stmt;
+            
+        }, keyHolder);
 
-		return keyHolder.getKey().longValue();
-	}
+        return keyHolder.getKey().longValue();
+    }
 
-	@Override
-	public void update(User user) {
+    @Override
+    public void update(User user) {
 
-		var sqlQuery = Query.UPDATE;
+        var sqlQuery = Query.UPDATE;
 
-		jdbcTemplate.update(sqlQuery,
-				user.getFirstName(),
-				   user.getLastName(),
-				     user.getEmail(),
-				       user.getId());
-	}
+        jdbcTemplate.update(sqlQuery,
+                user.firstName(),
+                   user.lastName(),
+                     user.email(),
+                       user.id());
+    }
 
-	@Override
-	public Boolean delete(Long id) {
+    @Override
+    public Boolean delete(Long id) {
 
-		var sqlQuery = Query.DELETE;
+        var sqlQuery = Query.DELETE;
 
-		return jdbcTemplate.update(sqlQuery, id) > 0;
-	}
+        return jdbcTemplate.update(sqlQuery, id) > 0;
+    }
 
-	private User mapRowToUser(ResultSet resultSet, int rowNum) 
-			throws SQLException {
+    private User mapRowToUser(ResultSet resultSet, int rowNum)
+        throws SQLException {
 
-		var user = new User();
+        var user = new User(resultSet.getLong("id"), 
+                resultSet.getString("first_name"),
+                 resultSet.getString("last_name"),
+                 resultSet.getString("email"));
 
-		user.setFirstName(resultSet.getString("first_name"));
-		user.setId(resultSet.getLong("id"));
-		user.setLastName(resultSet.getString("last_name"));
-		user.setEmail(resultSet.getString("email"));
-
-		return user;
-	}
+        return user;
+    }
 
 }
