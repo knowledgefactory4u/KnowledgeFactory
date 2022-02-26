@@ -26,7 +26,7 @@ public class SpringBootJavaRecordApplication
 	@Override
 	public void run(String... args) throws Exception {
 		
-        //Inserting dummy datas
+        //Inserting dummy data
 		User user1 = 
 				new User("dummy user", 
 						 "dummy lastname", "dummy@gmail.com");
