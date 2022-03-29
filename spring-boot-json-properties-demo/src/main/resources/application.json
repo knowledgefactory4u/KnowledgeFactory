@@ -1,0 +1,5 @@
+{
+"server.port":9080,
+"testdata1":"testing",
+"valuesMap":"{key1: '1', key2: '2', key3: '3'}"
+}
