@@ -1,13 +1,11 @@
-<h2>Spring Boot Starter</h2>
+# Spring Boot examples
 
-<h3>How to run the application in your local machine?</h3>
+# Local setup
 
-<b>Step 1:</b> Clone or download the code
+Step 1: Download or clone the source code from GitHub to the local machine
 
-<b>Step 2:</b> Open the project using your favourite IDE. I am using IntelliJ IDEA.
+Step 2:  ```mvn clean install```
 
-<b>Step 3:</b> Build 
-
-<b>Step 4:</b> Run
+Step 3:  ```mvn spring-boot:run``` or Run as Java Application
 
 
