@@ -18,16 +18,22 @@ public class Application implements CommandLineRunner {
 		SpringApplication.run(Application.class, args);
 	}
 
-	/* Add some rows into roles collection before assigning any role to Employee. */
+	/*
+	 * Add some rows into roles collection before assigning any role to Employee.
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-			Role role = new Role();
-			role.setName(ERole.ROLE_EMPLOYEE);
-			roleRepository.save(role);
-			Role role2 = new Role();
-			role2.setName(ERole.ROLE_ADMIN);
-			roleRepository.save(role2);
+			if (roleRepository.findAll().isEmpty()) {
+				Role role = new Role();
+				role.setName(ERole.ROLE_EMPLOYEE);
+				roleRepository.save(role);
+				Role role2 = new Role();
+				role2.setName(ERole.ROLE_ADMIN);
+				roleRepository.save(role2);
+			} else {
+
+			}
 		} catch (Exception e) {
 
 		}

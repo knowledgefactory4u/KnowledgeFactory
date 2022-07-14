@@ -1,12 +1,9 @@
 package com.knf.dev.request;
 
-import javax.validation.constraints.NotBlank;
-
 public class LoginRequest {
-	@NotBlank
+
 	private String employeename;
 
-	@NotBlank
 	private String password;
 
 	public String getEmployeename() {

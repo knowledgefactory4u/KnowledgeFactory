@@ -12,6 +12,7 @@ import com.knf.dev.response.MessageResponse;
 @RestController
 @RequestMapping("/api/test")
 public class EmployeeController {
+
 	@GetMapping("/all")
 	public MessageResponse allAccess() {
 		return new MessageResponse("Public ");

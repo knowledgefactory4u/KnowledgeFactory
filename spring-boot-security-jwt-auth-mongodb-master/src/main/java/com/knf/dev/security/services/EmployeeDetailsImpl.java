@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.knf.dev.models.Employee;
 
 public class EmployeeDetailsImpl implements UserDetails {
+
 	private static final long serialVersionUID = 1L;
 
 	private String id;
@@ -28,6 +29,7 @@ public class EmployeeDetailsImpl implements UserDetails {
 
 	public EmployeeDetailsImpl(String id, String username, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
+
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -36,6 +38,7 @@ public class EmployeeDetailsImpl implements UserDetails {
 	}
 
 	public static EmployeeDetailsImpl build(Employee user) {
+
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
@@ -45,6 +48,7 @@ public class EmployeeDetailsImpl implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+
 		return authorities;
 	}
 

@@ -12,12 +12,14 @@ import com.knf.dev.repository.EmployeeRepository;
 
 @Service
 public class EmployeeDetailsServiceImpl implements UserDetailsService {
+
 	@Autowired
 	EmployeeRepository employeeRepository;
 
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String employeename) throws UsernameNotFoundException {
+
 		Employee employee = employeeRepository.findByEmployeename(employeename)
 				.orElseThrow(() -> new UsernameNotFoundException("Employee Not Found with username: " + employeename));
 
