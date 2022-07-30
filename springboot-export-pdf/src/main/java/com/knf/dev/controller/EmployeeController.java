@@ -10,7 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.knf.dev.model.Employee;
@@ -18,14 +17,14 @@ import com.knf.dev.repository.EmployeeRepository;
 import com.knf.dev.util.PDFGenerator;
 
 @RestController
-@RequestMapping("/api/pdf")
 public class EmployeeController {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
 
-	@GetMapping(value = "/employees", produces = MediaType.APPLICATION_PDF_VALUE)
+	@GetMapping(value = "/export", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> employeeReport() throws IOException {
+
 		List<Employee> employees = (List<Employee>) employeeRepository.findAll();
 
 		ByteArrayInputStream bis = PDFGenerator.employeePDFReport(employees);

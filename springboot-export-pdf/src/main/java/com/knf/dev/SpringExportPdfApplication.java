@@ -25,7 +25,7 @@ public class SpringExportPdfApplication implements CommandLineRunner {
 
 		if (repository.count() == 0) {
 			// save a list of Employees
-			repository.saveAll(Arrays.asList(new Employee("Adam", "John"), new Employee("Sibin", "muhammed"),
+			repository.saveAll(Arrays.asList(new Employee("Adam", "John"), new Employee("Sibin", "Rasiya"),
 					new Employee("Arun", "Mohan"), new Employee("Scott", "Morrison"),
 					new Employee("Hikaru", "Nakamura"), new Employee("Ishivaka", "Yusuke")));
 		}
