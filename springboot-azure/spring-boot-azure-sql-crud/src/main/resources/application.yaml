@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: <username>
+    password: <password>
+    url: jdbc:sqlserver://<servername>:1433;database=demo_db;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;   
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
