@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    azure:
+      keyvault:
+        secret:
+          property-source-enabled: true
+          property-sources[0]:
+            credential:
+              client-secret: <Client Secret Value>
+              client-id: <Client ID>
+            profile:
+              tenant-id: <Tenant ID>
+            endpoint: <Vault URI>
