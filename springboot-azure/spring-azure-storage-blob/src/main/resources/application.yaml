@@ -1,0 +1,6 @@
+azure:
+  storage:
+    container:
+      name: <Container name>
+    connection:
+      string: <Connection string>
