@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    azure:
+      cosmos:
+        database: knowledgehub
+        populate-query-metrics: true
+        endpoint: https://knowledgefactory.documents.azure.com:443/
+        key: hV5R1OBe67B9859yVQ1b71HOjSEH7ozYrJmENavBRVDhtLyB6jl8zSlqYvZtKWx9OMa0EvDZJNTYii0AXRgk1Q==
