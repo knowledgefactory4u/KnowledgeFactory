@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    azure:
+      appconfiguration:
+        stores[0]:
+          connection-string: <Connection string>
