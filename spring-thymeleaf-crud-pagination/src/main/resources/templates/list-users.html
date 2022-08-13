@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>All Users</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+
+<style>
+.pagination-container {
+	text-align: right;
+	padding-right: 0;
+}
+
+.page-select {
+	padding-left: 0;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.pointer-disabled {
+	pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div th:switch="${users}" class="container my-5">
+			<p class="my-5">
+				<a href="/addOrEdit" class="btn btn-success"> <i
+					class="fas fa-user-plus ml-2"> Add User </i>
+				</a>
+			</p>
+
+
+			<select class="form-control pagination" id="pageSizeSelect">
+				<option th:each="pageSize : ${pageSizes}" th:text="${pageSize}"
+					th:value="${pageSize}"
+					th:selected="${pageSize} == ${selectedPageSize}"></option>
+			</select> <br></br>
+			<div th:if="${users.totalPages != 1}">
+				<ul class="pagination">
+					<li th:class="${users.number == 0} ? disabled"><a
+						class="page-link"
+						th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a></li>
+					<li th:class="${users.number == 0} ? disabled"><a
+						class="page-link"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${users.number})}">&larr;</a>
+					</li>
+					<li
+						th:class="${users.number == (page - 1)} ? 'active pointer-disabled'"
+						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+						<a class="page-link"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${page})}"
+						th:text="${page}"></a>
+					</li>
+					<li th:class="${users.number + 1 == users.totalPages} ? disabled">
+						<a class="page-link"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${users.number + 2})}">&rarr;</a>
+					</li>
+					<li th:class="${users.number + 1 == users.totalPages} ? disabled">
+						<a class="page-link"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${users.totalPages})}">&raquo;</a>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div th:case="*">
+				<div class="table-responsive-xl">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Email</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="user : ${users}">
+								<td th:text="${user.firstName}"></td>
+								<td th:text="${user.lastName}"></td>
+								<td th:text="${user.email}"></td>
+								<td><a th:href="@{/addOrEdit/{id}(id=${user.id})}"
+									class="btn btn-warning"> <i class="fas fa-user-edit ml-2"></i>
+								</a></td>
+								<td><a th:href="@{/delete/{id}(id=${user.id})}"
+									class="btn btn-danger"> <i class="fas fa-user-times ml-2"></i>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/3.4.0/jquery.min.js} "></script>
+	<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js} "></script>
+
+	<script>
+	$(document).ready(() => {
+	    changePageAndSize();
+	});
+
+	changePageAndSize = () => {
+	    $('#pageSizeSelect').change(evt => {
+	        window.location.replace(`/?pageSize=${evt.target.value}&page=1`);
+	    });
+	}
+	</script>
+
+</body>
+</html>
