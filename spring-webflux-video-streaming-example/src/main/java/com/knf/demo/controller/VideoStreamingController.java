@@ -14,7 +14,7 @@ public class VideoStreamingController {
     @Autowired
     private VideoStreamingService service;
 
-    @GetMapping(value = "video/{name}", produces = "video/mp4")
+    @GetMapping(value = "video/{title}", produces = "video/mp4")
     public Mono<Resource> getVideo(@PathVariable String title, @RequestHeader("Range") String range) {
           return service.getVideo(title);
     }
