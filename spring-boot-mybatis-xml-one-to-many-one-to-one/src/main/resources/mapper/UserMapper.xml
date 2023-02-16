@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.knf.dev.demo.repository.UserRepository" >
+    <!--    result maps     -->
+    <resultMap id="UserResultMap" type="com.knf.dev.demo.model.User" >
+        <id column="email" property="email"  />
+        <result column="name" property="name" />
+        <!--    collections of Cards     -->
+        <collection property="cards" ofType="com.knf.dev.demo.model.Card"
+                    column="email" select="selectCardFromUser" />
+    </resultMap>
+
+    <resultMap id = "CardResultMap"
+               type = "com.knf.dev.demo.model.Card">
+        <id property = "id" column = "id"/>
+        <result property = "cardNumber" column = "cardnumber"/>
+        <result property = "cardType" column = "cardtype"/>
+        <result property = "email" column = "email"/>
+    </resultMap>
+
+    <!--    one to many select  -->
+    <select id="selectUserById"
+            resultMap="UserResultMap"
+            parameterType="java.lang.String" >
+        SELECT
+        users.name,
+        users.email
+        FROM
+        users
+        WHERE users.email = #{email}
+    </select>
+
+    <select id="selectCardFromUser"
+            parameterType="java.lang.String"
+            resultType="com.knf.dev.demo.model.Card"
+            resultMap="CardResultMap">
+        SELECT
+        cards.id,
+        cards.email,
+        cards.cardnumber,
+        cards.cardtype
+        FROM
+        cards
+        WHERE
+        email = #{email}
+    </select>
+</mapper>
