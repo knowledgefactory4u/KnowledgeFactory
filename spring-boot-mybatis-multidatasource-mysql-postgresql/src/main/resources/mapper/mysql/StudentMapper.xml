@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.knf.dev.demo.mapper.mysql.StudentMapper">
+    <resultMap type="student" id="result">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="schoolName" column="school_name" />
+        <result property="email" column="email" />
+    </resultMap>
+
+    <select id="findAllStudent" resultType="student" resultMap="result">
+        SELECT * FROM students
+    </select>
+
+    <insert id="insertStudent" parameterType="student"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO students(name, school_name, email)
+        VALUES(#{name}, #{schoolName}, #{email})
+    </insert>
+
+    <update id="updateStudent" parameterType="student">
+        UPDATE students SET name = #{name},
+        email = #{email}, school_name = #{schoolName}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteStudentById" parameterType="int">
+        DELETE FROM students WHERE id = #{id}
+    </delete>
+
+    <select id="findStudentById" parameterType="int"
+            resultType="student" resultMap="result">
+        SELECT * FROM students WHERE id = #{id}
+    </select>
+</mapper>

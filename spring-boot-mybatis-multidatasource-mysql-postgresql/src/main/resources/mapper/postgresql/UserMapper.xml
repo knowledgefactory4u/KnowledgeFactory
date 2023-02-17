@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.knf.dev.demo.mapper.postgresql.UserMapper">
+    <resultMap type="user" id="result">
+        <id property="id" column="id" />
+        <result property="firstName" column="first_name" />
+        <result property="lastName" column="last_name" />
+        <result property="email" column="email" />
+    </resultMap>
+
+    <select id="findAllUser" resultType="user" resultMap="result">
+        SELECT * FROM users
+    </select>
+
+    <insert id="insertUser" parameterType="user"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO users(first_name, last_name, email)
+        VALUES(#{firstName}, #{lastName}, #{email})
+    </insert>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE users SET first_name = #{firstName},
+        email = #{email}, last_name = #{lastName}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <select id="findUserById" parameterType="int"
+            resultType="user" resultMap="result">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+</mapper>
