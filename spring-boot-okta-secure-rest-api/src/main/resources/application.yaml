@@ -1,0 +1,3 @@
+okta:
+  oauth2:
+    issuer: https://<your-domain>/oauth2/default
