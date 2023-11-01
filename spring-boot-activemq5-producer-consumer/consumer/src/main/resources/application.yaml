@@ -1,0 +1,11 @@
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    password: admin
+    user: admin
+  jms:
+    pub-sub-domain: true
+
+activemq:
+  topic:
+    name: knowledgeFactory_Topic
