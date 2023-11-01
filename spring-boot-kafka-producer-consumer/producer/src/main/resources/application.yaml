@@ -1,9 +1,11 @@
 spring:
-  kafka:
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-kafka:
+  activemq:
+    broker-url: tcp://localhost:61616
+    password: admin
+    user: admin
+  jms:
+    pub-sub-domain: true
+
+activemq:
   topic:
     name: knowledgeFactory_Topic

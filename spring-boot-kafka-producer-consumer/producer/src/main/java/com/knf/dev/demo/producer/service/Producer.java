@@ -1,23 +1,23 @@
 package com.knf.dev.demo.producer.service;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Producer {
 
-    KafkaTemplate<String,String> kafkaTemplate;
+    JmsTemplate jmsTemplate;
 
-    @Value("${kafka.topic.name}")
+    @Value("${activemq.topic.name}")
     private String topic;
 
-    public Producer(KafkaTemplate<String, String> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
+    public Producer(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
     }
 
     public void sendMessageToTopic(String message)
     {
-        kafkaTemplate.send(topic,message);
+        jmsTemplate.convertAndSend(topic,message);
     }
 }
