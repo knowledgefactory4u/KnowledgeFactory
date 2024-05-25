@@ -1,0 +1,21 @@
+spring:
+  cassandra:
+    schema-action: CREATE_IF_NOT_EXISTS
+astra:
+  api:
+    application-token: <APPLICATION-TOKEN>
+    database-id: <DATABASE-ID>
+    database-region: <REGION>
+    cross-region-failback: false
+    grpc:
+      enabled: true
+  cql:
+    enabled: true
+    download-scb:
+      # if disabled zip files must be in folder (path)
+      enabled: true
+      # Looking for files scb_dbid-dbregion.zip in folder (default is ~/.astra/scb)
+      # path: /tmp
+    driver-config:
+      basic:
+        session-keyspace: default_keyspace
